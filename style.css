@@ -17,7 +17,6 @@ License URI:        https://github.com/NordcomInc/betheme-wordpress-headless-the
 body.embeded #main-content .mec-wrap {
     margin: 0;
     margin-top: 0;
-    width: 100%;
 }
 body.embeded #Wrapper #main-content.mec-container {
     padding-left: 0;

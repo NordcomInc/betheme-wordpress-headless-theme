@@ -31,11 +31,13 @@ if (!function_exists('nordcom_theme_enqueue_styles')) {
 }
 add_action('wp_enqueue_scripts', 'nordcom_theme_enqueue_styles');
 
-if (!function_exists('nordcom_theme_query_vars')) {
-    function nordcom_theme_query_vars($vars) {
-        $vars[] = "iframe";
-        return $vars;
+if (get_theme_mod("headless_embeded_enable", true)) {
+    if (!function_exists('nordcom_theme_query_vars')) {
+        function nordcom_theme_query_vars($vars) {
+            $vars[] = "iframe";
+            return $vars;
+        }
     }
+    add_filter('query_vars', 'nordcom_theme_query_vars');
+    get_query_var('iframe');
 }
-add_filter('query_vars', 'nordcom_theme_query_vars');
-get_query_var('iframe');

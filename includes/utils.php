@@ -8,7 +8,8 @@
  */
 
 function is_embeded_mode(): bool {
-    return !(get_query_var('iframe', null) === null);
+    return get_theme_mod("headless_embeded_enable", true) &&
+        !(get_query_var('iframe', null) === null);
 }
 
 function is_headless(): bool {

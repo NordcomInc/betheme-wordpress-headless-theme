@@ -10,11 +10,15 @@
  */
     $target = get_theme_mod('headless_redirect_uri');
 
-    if (!is_privileged() && !empty($target)) {
+    if (!is_privileged() && ! is_embeded_mode() && !empty($target)) {
         header('Location: ' . $target, true, 302);
     }
 
     if (is_embeded_mode()) {
+        if ($target) {
+            header("Content-Security-Policy: frame-ancestors 'self' {$target};");
+        }
+
         ob_start();
     }
 ?>
