@@ -25,5 +25,12 @@ yarn-error.log*
 # deployment
 .vercel
 
+# wordpress
+wp-cli.local.yml
+.idea*
+*.sql
+*.tar.gz
+*.zip
+
 # typescript
 *.tsbuildinfo
