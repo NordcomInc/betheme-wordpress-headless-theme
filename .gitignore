@@ -10,9 +10,12 @@ coverage/
 # production
 build/
 .env.local
+.zip
+.tar.gz
 
 # misc
 .DS_Store
+Thumbs.db
 
 # debug
 npm-debug.log*

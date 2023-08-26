@@ -8,22 +8,18 @@
  * @author Nordcom Group Inc.
  * @link https://nordcom.io/
  */
-
-    $enabled = !defined('DOING_CRON') &&
-        !defined('DOING_CRON') &&
-        !is_admin() &&
-        !defined('GRAPHQL_HTTP_REQUEST') &&
-        get_theme_mod("headless_enable", true);
-
-    $is_privileged = (current_user_can('administrator') || current_user_can('editor'));
     $target = get_theme_mod('headless_redirect_uri');
 
-    if (!$is_privileged && !empty($target)) {
+    if (!is_privileged() && !empty($target)) {
         header('Location: ' . $target, true, 302);
+    }
+
+    if (is_embeded_mode()) {
+        ob_start();
     }
 ?>
 
-<?php if (!$enabled || $is_privileged): ?>
+<?php if (!is_headless() || is_embeded_mode() || is_privileged()): ?>
     <?php require_once get_template_directory()  . '/header.php'; ?>
 <?php else: ?>
     <!DOCTYPE html>
@@ -37,7 +33,14 @@
                 <script type="text/javascript">
                     window.location = '<?php echo esc_url($target); ?>';
                 </script>
-            <?php else: ?>
+            <?php else:
+                /**
+                 * We can ignore the wp_enqueue_scripts error
+                 * here as we're not actually loading any wordpress
+                 * header tags. So it's okay to hardcode this
+                 * for that one 401 screen.
+                 */
+            ?>
                 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
             <?php endif; ?>
         </head>
@@ -66,4 +69,4 @@
                 die();
             ?>
 
-<?php endif;
+<?php endif; ?>

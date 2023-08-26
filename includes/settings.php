@@ -36,5 +36,7 @@ function nordcom_theme_settings_headless_init($wp_customize) {
         'section' => 'headless',
         'type' => 'url'
     ));
+
+    // TODO: Add toggle for embeded mode.
 }
 add_action('customize_register', 'nordcom_theme_settings_headless_init');
