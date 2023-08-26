@@ -11,6 +11,7 @@ License URI: https://github.com/NordcomInc/betheme-wordpress-headless-theme/blob
 Migrate to headless WordPress without losing access to the Betheme BeBuilder.
 
 == Description ==
+
 A headless child theme to the famous Betheme by Muffin Group,
 take your site to the next level with a WordPress headless theme.
 

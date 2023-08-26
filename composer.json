@@ -14,7 +14,7 @@
         }
     ],
     "suggest": {
-        "wp-graphql/wp-graphql": "Required to return data via GraphQl"
+        "nordcom/wp-graphql-bebuilder": "Integrates with BeBuilder."
     },
     "require-dev": {
         "automattic/vipwpcs": "^2.3",
