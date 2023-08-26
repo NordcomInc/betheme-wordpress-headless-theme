@@ -7,9 +7,11 @@
  * @author Nordcom Group Inc.
  * @link https://nordcom.io/
  */
+
+    $enabled = get_theme_mod("headless_enable", true);
 ?>
 
-<?php if (current_user_can('administrator') || current_user_can('editor')): ?>
+<?php if (!$enabled || current_user_can('administrator') || current_user_can('editor')): ?>
     <?php require_once get_template_directory()  . '/footer.php'; ?>
 <?php else: ?>
 </body>

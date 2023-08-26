@@ -9,15 +9,21 @@
  * @link https://nordcom.io/
  */
 
+    $enabled = !defined('DOING_CRON') &&
+        !defined('DOING_CRON') &&
+        !is_admin() &&
+        !defined('GRAPHQL_HTTP_REQUEST') &&
+        get_theme_mod("headless_enable", true);
+
     $is_privileged = (current_user_can('administrator') || current_user_can('editor'));
     $target = get_theme_mod('headless_redirect_uri');
 
     if (!$is_privileged && !empty($target)) {
-        header('Location: ' . $url, true, 302);
+        header('Location: ' . $target, true, 302);
     }
 ?>
 
-<?php if ($is_privileged): ?>
+<?php if (!$enabled || $is_privileged): ?>
     <?php require_once get_template_directory()  . '/header.php'; ?>
 <?php else: ?>
     <!DOCTYPE html>
@@ -27,9 +33,9 @@
             <meta charset="<?php bloginfo('charset'); ?>" />
 
             <?php if (!empty($target)): ?>
-                <meta content="5;url=<?php echo $target; ?>" http-equiv="refresh"/>
+                <meta content="5;url=<?php echo esc_url($target); ?>" http-equiv="refresh"/>
                 <script type="text/javascript">
-                    window.location = '<?php echo $target; ?>';
+                    window.location = '<?php echo esc_url($target); ?>';
                 </script>
             <?php else: ?>
                 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
@@ -38,7 +44,7 @@
         <body>
             <?php if (!empty($target)): ?>
                 <h1>Redirecting you to the new website...</h1>
-                <p>Click <a href="<?php echo $target; ?>">here</a> you don't get redirected automatically.</p>
+                <p>Click <a href="<?php echo esc_url($target); ?>">here</a> you don't get redirected automatically.</p>
             <?php else: ?>
                 <?php
                     status_header(401);
@@ -46,7 +52,7 @@
 
                 <h1>401: Unauthorized</h1>
                 <h2>You are not permitted to view this page.</h2>
-                <p>Click <a href="<?php echo site_url('wp-login.php', 'login'); ?>">here</a> to login.</p>
+                <p>Click <a href="<?php echo esc_url(site_url('wp-login.php', 'login')); ?>">here</a> to login.</p>
             <?php endif; ?>
 
             <?php
@@ -59,4 +65,5 @@
                  */
                 die();
             ?>
-<?php endif; // Recommended by parent theme to omit closing tag?
+
+<?php endif;

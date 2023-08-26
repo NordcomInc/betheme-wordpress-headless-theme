@@ -1,6 +1,6 @@
 {
     "name": "@nordcom/betheme-wordpress-headless-theme",
-    "description": "Turn your Betheme WordPress site headless so you never have to deal with PHP again.",
+    "description": "Turn your Betheme WordPress site headless while keeping all the functionality",
     "version": "0.1.0",
     "prettier": "@nordcom/prettier",
     "scripts": {},
