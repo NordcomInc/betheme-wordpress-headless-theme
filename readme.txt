@@ -23,6 +23,12 @@ Designed to work perfectly with [WPGraphQL BeBuilder](https://github.com/Nordcom
 
 Initially based on [@nordcom/wordpress-headless-theme](https://github.com/NordcomInc/wordpress-headless-theme).
 
+== NOTE ==
+
+This is a theme for a __headless__ WordPress setup, the point
+of it is to disable the frontend except for post/page previews and
+if you're using the embeding feature during migration.
+
 == Changelog ==
 
 = 0.1.0 =

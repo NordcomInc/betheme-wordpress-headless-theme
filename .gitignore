@@ -24,6 +24,7 @@ yarn-error.log*
 
 # deployment
 .vercel
+theme-build/
 
 # wordpress
 wp-cli.local.yml
