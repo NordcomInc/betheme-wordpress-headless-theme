@@ -16,7 +16,7 @@
 
     if (is_embeded_mode()) {
         if ($target) {
-            header("Content-Security-Policy: frame-ancestors 'self' {$target};");
+            header("Content-Security-Policy: frame-ancestors 'self' http://localhost:3000 {$target};");
         }
 
         ob_start();
