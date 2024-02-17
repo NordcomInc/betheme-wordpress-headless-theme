@@ -31,7 +31,7 @@ jobs:
                   composer archive -vvv --format=zip --file="theme-build/betheme-wordpress-headless-theme"
 
             - name: 🚛 Upload artifact
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                   name: betheme-wordpress-headless-theme
                   path: theme-build/betheme-wordpress-headless-theme.zip
